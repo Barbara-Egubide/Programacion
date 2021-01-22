@@ -19,7 +19,7 @@ public class VAlta extends javax.swing.JFrame {
      */
     public VAlta() {
         initComponents();
-        
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -143,6 +143,7 @@ public class VAlta extends javax.swing.JFrame {
     }//GEN-LAST:event_tfdniActionPerformed
 
     private void baceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_baceptarActionPerformed
+        
         Ejercicio2.llenarListado(tfnombre.getText(),tfapellido.getText(),tfdni.getText());
         JOptionPane.showMessageDialog(this, "Persona dada de alta");
         tfnombre.setText("");

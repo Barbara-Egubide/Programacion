@@ -19,6 +19,11 @@ public class VListado extends javax.swing.JFrame {
     public VListado() {
         initComponents();
     }
+     public VListado(String datos) {
+        initComponents();
+        setLocationRelativeTo(null);
+        taListaDatos.setText(datos);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -31,7 +36,7 @@ public class VListado extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        taListaDatos = new javax.swing.JTextArea();
         bsalir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -39,9 +44,9 @@ public class VListado extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText(" LISTADO  DE  PERSONAS ");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        taListaDatos.setColumns(20);
+        taListaDatos.setRows(5);
+        jScrollPane1.setViewportView(taListaDatos);
 
         bsalir.setText("Salir");
         bsalir.addActionListener(new java.awt.event.ActionListener() {
@@ -82,9 +87,6 @@ public class VListado extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_bsalirActionPerformed
 
-    public void llenarTextArea(String datos){ 
-        jTextArea1.setText(datos);
-    }
     /**
      * @param args the command line arguments
      */
@@ -124,6 +126,6 @@ public class VListado extends javax.swing.JFrame {
     private javax.swing.JButton bsalir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea taListaDatos;
     // End of variables declaration//GEN-END:variables
 }
