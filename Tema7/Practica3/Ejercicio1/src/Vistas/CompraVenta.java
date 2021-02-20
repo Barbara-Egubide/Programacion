@@ -17,6 +17,7 @@ import javax.swing.JOptionPane;
  */
 public class CompraVenta extends javax.swing.JFrame {
     private int unidades;
+    private float precioCompra;
 
     /**
      * Creates new form Compras
@@ -134,6 +135,11 @@ public class CompraVenta extends javax.swing.JFrame {
         jLabel4.setText("Precio");
 
         tfPrecioCompra.setEnabled(false);
+        tfPrecioCompra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfPrecioCompraActionPerformed(evt);
+            }
+        });
 
         jLabel5.setText("Proveedor");
 
@@ -293,6 +299,11 @@ public class CompraVenta extends javax.swing.JFrame {
 
         bAceptar.setText("Aceptar");
         bAceptar.setEnabled(false);
+        bAceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bAceptarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -381,7 +392,7 @@ public class CompraVenta extends javax.swing.JFrame {
     }//GEN-LAST:event_tfNombreProdActionPerformed
 
     private void tfImporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfImporteActionPerformed
-
+        
     }//GEN-LAST:event_tfImporteActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
@@ -423,12 +434,51 @@ public class CompraVenta extends javax.swing.JFrame {
     }//GEN-LAST:event_bCancelarActionPerformed
 
     private void rbVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbVentaActionPerformed
-
+        tfPrecioVenta.setEnabled(true);
+        rbCompra.setEnabled(false);
+        rbVenta.setEnabled(false);
     }//GEN-LAST:event_rbVentaActionPerformed
 
     private void rbCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbCompraActionPerformed
-
+        tfPrecioCompra.setEnabled(true);
+        rbCompra.setEnabled(false);
+        rbVenta.setEnabled(false);
+        tfPrecioCompra.requestFocus();
     }//GEN-LAST:event_rbCompraActionPerformed
+
+    private void tfPrecioCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfPrecioCompraActionPerformed
+        try{
+           if (tfPrecioCompra.getText().isEmpty())
+               throw new DatoNoValido("Es obligatorio indicar el precio");
+            precioCompra = Float.parseFloat(tfPrecioCompra.getText());
+            tfPrecioCompra.setEnabled(false);
+
+           if (!Ejercicio1.llenarProveedores(cbProveedores))
+               throw new DatoNoValido("Problemas al llenar la lista de proveedores");
+          // cbProveedores.setSelectedIndex(-1);
+           cbProveedores.setEnabled(true);
+           tfImporte.setText("" +unidades*precioCompra); 
+           bAceptar.setEnabled(true);
+       }
+       catch(DatoNoValido e)
+       {
+          JOptionPane.showMessageDialog(this,e.getMessage());
+           tfPrecioCompra.requestFocus();
+       }
+       catch(NumberFormatException e)
+       {
+           JOptionPane.showMessageDialog(this,"El precio de compra ha de ser numérico");
+           tfPrecioCompra.requestFocus();
+       }
+       catch(Exception e) {
+          JOptionPane.showMessageDialog(this,e.getMessage());
+           tfPrecioCompra.requestFocus();
+        }
+    }//GEN-LAST:event_tfPrecioCompraActionPerformed
+
+    private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
+        
+    }//GEN-LAST:event_bAceptarActionPerformed
 
     /**
      * @param args the command line arguments

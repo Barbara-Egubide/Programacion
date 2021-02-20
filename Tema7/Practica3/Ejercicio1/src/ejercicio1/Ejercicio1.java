@@ -3,6 +3,7 @@ package ejercicio1;
 import Clases.*;
 import Vistas.*;
 import java.util.ArrayList;
+import javax.swing.JComboBox;
 
 public class Ejercicio1 {
     
@@ -67,6 +68,19 @@ public class Ejercicio1 {
         objetoProd=listaProductos.get(x);
         return true;
                 
+    }
+
+    public static boolean llenarProveedores(JComboBox<String> Proveedores) {   
+        try{
+            for(int x = 0; x < objetoProd.getProveedor().size(); x++)
+            {
+                Proveedores.insertItemAt(objetoProd.getProveedor().get(x).getNombre(), x);
+            }
+            return true;
+        }
+        catch(Exception e){
+            return false;
+        }    
     }
     
         
