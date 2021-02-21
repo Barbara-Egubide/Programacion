@@ -38,14 +38,14 @@ public class Ejercicio1 {
         lista=new  ArrayList();
             lista.add(litaProveedor.get(0));
             lista.add(litaProveedor.get(1));
-        listaProductos.add(new Producto("Manzanas",22,2.50,lista));
+        listaProductos.add(new Producto("Peras",22,1.90,lista));
         
         lista=new  ArrayList();
             lista.add(litaProveedor.get(3));
             lista.add(litaProveedor.get(2));
             lista.add(litaProveedor.get(4));
             lista.add(litaProveedor.get(1));
-        listaProductos.add(new Producto("Peras",22,2.50,lista));
+        listaProductos.add(new Producto("Manzanas",22,1.50,lista));
         
          lista=new  ArrayList();
             lista.add(litaProveedor.get(2));
@@ -81,6 +81,10 @@ public class Ejercicio1 {
         catch(Exception e){
             return false;
         }    
+    }
+
+    public static double precioVenta() {
+        return objetoProd.getPrecioUnitario();
     }
     
         
