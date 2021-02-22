@@ -38,20 +38,20 @@ public class Ejercicio1 {
         lista=new  ArrayList();
             lista.add(litaProveedor.get(0));
             lista.add(litaProveedor.get(1));
-        listaProductos.add(new Producto("Peras",22,1.90,lista));
+        listaProductos.add(new Producto("Aguacates",22,1.90,lista));
         
         lista=new  ArrayList();
             lista.add(litaProveedor.get(3));
             lista.add(litaProveedor.get(2));
             lista.add(litaProveedor.get(4));
             lista.add(litaProveedor.get(1));
-        listaProductos.add(new Producto("Manzanas",22,1.50,lista));
+        listaProductos.add(new Producto("Peras",22,1.50,lista));
         
          lista=new  ArrayList();
             lista.add(litaProveedor.get(2));
             lista.add(litaProveedor.get(4));
             lista.add(litaProveedor.get(1));
-        listaProductos.add(new Producto("Aguacates",22,2.50,lista));
+        listaProductos.add(new Producto("Manzanas",22,2.50,lista));
         
         // lista clliente
         listaCliente=new  ArrayList();
@@ -86,6 +86,24 @@ public class Ejercicio1 {
     public static double precioVenta() {
         return objetoProd.getPrecioUnitario();
     }
+
+    public static float importeVenta(int unidades, boolean prontoPago, boolean volumen) {
+        float importe;
+        int dto = 0;
+        importe=(float) (objetoProd.getPrecioUnitario() *unidades);
+        if (prontoPago)
+        {
+            dto=dto + 3;
+        }
+        if (volumen)
+        {
+           dto=dto + 2;
+        }
+        importe=importe * (100 - dto)/100;
+        return importe;
+    }
+
+    
     
         
     

@@ -12,7 +12,7 @@ public class DatoNoValido extends Exception{
     }
 
     @Override
-    public String toString() {
+    public String getMessage() {
         return  message;
     }
     

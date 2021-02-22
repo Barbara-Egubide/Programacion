@@ -18,7 +18,8 @@ import javax.swing.JOptionPane;
 public class CompraVenta extends javax.swing.JFrame {
     private int unidades;
     private float precioCompra;
-     private float precioVenta;
+    private float precioVenta;
+    private double precioTotal;
     /**
      * Creates new form Compras
      */
@@ -57,7 +58,7 @@ public class CompraVenta extends javax.swing.JFrame {
         tfPrecioVenta = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         tfCliente = new javax.swing.JTextField();
-        jPanel4 = new javax.swing.JPanel();
+        descuentos = new javax.swing.JPanel();
         cbPorVolumen = new javax.swing.JCheckBox();
         cbProntoPago = new javax.swing.JCheckBox();
         jLabel9 = new javax.swing.JLabel();
@@ -217,7 +218,16 @@ public class CompraVenta extends javax.swing.JFrame {
             }
         });
 
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Descuentos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(0, 102, 204))); // NOI18N
+        descuentos.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Descuentos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(0, 102, 204))); // NOI18N
+        descuentos.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                descuentosAncestorAdded(evt);
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
 
         cbPorVolumen.setText("Por volumen");
         cbPorVolumen.setEnabled(false);
@@ -235,22 +245,22 @@ public class CompraVenta extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        javax.swing.GroupLayout descuentosLayout = new javax.swing.GroupLayout(descuentos);
+        descuentos.setLayout(descuentosLayout);
+        descuentosLayout.setHorizontalGroup(
+            descuentosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(descuentosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(cbPorVolumen)
                 .addGap(43, 43, 43)
                 .addComponent(cbProntoPago)
                 .addContainerGap(184, Short.MAX_VALUE))
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        descuentosLayout.setVerticalGroup(
+            descuentosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(descuentosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(descuentosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cbPorVolumen)
                     .addComponent(cbProntoPago))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -272,7 +282,7 @@ public class CompraVenta extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(descuentos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7)
@@ -301,7 +311,7 @@ public class CompraVenta extends javax.swing.JFrame {
                     .addComponent(jLabel8)
                     .addComponent(tfCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(descuentos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
@@ -394,7 +404,7 @@ public class CompraVenta extends javax.swing.JFrame {
                  throw new DatoNoValido("El nombre solo puede llevar letras");
             
             if(!Ejercicio1.ValidarNombreProd(tfNombreProd.getText()))
-                  throw new DatoNoValido("El producto escrito no existe");
+                throw new DatoNoValido("El producto escrito no existe");
             
             tfNombreProd.setEnabled(false);
             tfUnidades.setEnabled(true);
@@ -462,7 +472,7 @@ public class CompraVenta extends javax.swing.JFrame {
         
         Ejercicio1.precioVenta();
         tfPrecioVenta.setText(String.valueOf(Ejercicio1.precioVenta()));
-         precioVenta = Float.parseFloat(tfPrecioVenta.getText());
+        precioVenta = Float.parseFloat(tfPrecioVenta.getText());
     }//GEN-LAST:event_rbVentaActionPerformed
 
     private void rbCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbCompraActionPerformed
@@ -511,10 +521,7 @@ public class CompraVenta extends javax.swing.JFrame {
     }//GEN-LAST:event_tfPrecioVentaActionPerformed
 
     private void cbPorVolumenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbPorVolumenActionPerformed
-        if(cbPorVolumen.isSelected())
-            tfImporte.setText(""+unidades*precioVenta/1.03); 
-        if(cbPorVolumen.isSelected() && cbProntoPago.isSelected())
-            tfImporte.setText(""+unidades*precioVenta/1.05); 
+         tfImporteVenta.setText(String.valueOf(Ejercicio1.importeVenta(unidades,cbProntoPago.isSelected(),cbPorVolumen.isSelected())));  
     }//GEN-LAST:event_cbPorVolumenActionPerformed
 
     private void tfClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfClienteActionPerformed
@@ -544,13 +551,15 @@ public class CompraVenta extends javax.swing.JFrame {
     }//GEN-LAST:event_tfClienteActionPerformed
 
     private void cbProntoPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbProntoPagoActionPerformed
-        if(cbProntoPago.isSelected()){
-            double precioTotal= unidades*precioVenta/1.02;
-            tfImporte.setText("" +precioTotal); 
-        }
+        tfImporteVenta.setText(String.valueOf(Ejercicio1.importeVenta(unidades,cbProntoPago.isSelected(),cbPorVolumen.isSelected())));  
        
     }//GEN-LAST:event_cbProntoPagoActionPerformed
 
+    private void descuentosAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_descuentosAncestorAdded
+       
+    }//GEN-LAST:event_descuentosAncestorAdded
+
+    
     /**
      * @param args the command line arguments
      */
@@ -594,6 +603,7 @@ public class CompraVenta extends javax.swing.JFrame {
     private javax.swing.JCheckBox cbPorVolumen;
     private javax.swing.JCheckBox cbProntoPago;
     private javax.swing.JComboBox<String> cbProveedores;
+    private javax.swing.JPanel descuentos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -607,7 +617,6 @@ public class CompraVenta extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JRadioButton rbCompra;
     private javax.swing.JRadioButton rbVenta;
     private javax.swing.JTextField tfCliente;
