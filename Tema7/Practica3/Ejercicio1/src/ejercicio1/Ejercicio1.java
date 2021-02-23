@@ -60,7 +60,7 @@ public class Ejercicio1 {
 
     public static boolean ValidarNombreProd(String nombre) {
         int x;
-        for(x=0;x<listaProductos.size() && listaProductos.get(x).getNombre().equalsIgnoreCase(nombre);x++){}
+        for(x=0;x<listaProductos.size() && !listaProductos.get(x).getNombre().equalsIgnoreCase(nombre);x++){}
         if(x==listaProductos.size()){
             objetoProd=null;
             return false;        

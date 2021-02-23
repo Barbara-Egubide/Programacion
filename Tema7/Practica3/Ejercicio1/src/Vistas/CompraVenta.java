@@ -491,7 +491,7 @@ public class CompraVenta extends javax.swing.JFrame {
 
            if (!Ejercicio1.llenarProveedores(cbProveedores))
                throw new DatoNoValido("Problemas al llenar la lista de proveedores");
-          // cbProveedores.setSelectedIndex(-1);
+         
            cbProveedores.setEnabled(true);
            tfImporte.setText("" +unidades*precioCompra); 
            bAceptar.setEnabled(true);
