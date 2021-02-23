@@ -96,7 +96,7 @@ public class Ejercicio1 {
         m.setVisible(true);
     }
 
-    public static boolean validarNif(String nif) {
+    public static boolean validar(String nif,String clave) {
          try{
             int x;
             
@@ -105,6 +105,9 @@ public class Ejercicio1 {
                throw new DatoNoValido();
             
             c1= clientes.get(x);
+            if(!c1.getClave().equalsIgnoreCase(clave))
+                throw new DatoNoValido(); 
+            
             return true;               
            
         }
@@ -114,17 +117,7 @@ public class Ejercicio1 {
         }
     }
 
-    public static boolean validarClave(String clave) {
-        try{
-            if(!c1.getClave().equalsIgnoreCase(clave))
-                throw new DatoNoValido(); 
-            return true;    
-        }
-        catch(DatoNoValido e){
-            c1= null;
-            return false;
-        }    
-    }
+   
 
 
 
