@@ -6,6 +6,7 @@
 package Vistas;
 
 import ejercicio1.Ejercicio1;
+import java.util.ArrayList;
 
 /**
  *
@@ -29,7 +30,7 @@ public class Consultas extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Cuentas = new javax.swing.ButtonGroup();
+        bg = new javax.swing.ButtonGroup();
         jToolBar1 = new javax.swing.JToolBar();
         bConsultas = new javax.swing.JButton();
         bMovimientos = new javax.swing.JButton();
@@ -82,17 +83,47 @@ public class Consultas extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Cuentas"));
 
-        Cuentas.add(rb1);
+        bg.add(rb1);
+        rb1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rb1ActionPerformed(evt);
+            }
+        });
 
-        Cuentas.add(rb2);
+        bg.add(rb2);
+        rb2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rb2ActionPerformed(evt);
+            }
+        });
 
-        Cuentas.add(rb3);
+        bg.add(rb3);
+        rb3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rb3ActionPerformed(evt);
+            }
+        });
 
-        Cuentas.add(rb4);
+        bg.add(rb4);
+        rb4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rb4ActionPerformed(evt);
+            }
+        });
 
-        Cuentas.add(rb5);
+        bg.add(rb5);
+        rb5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rb5ActionPerformed(evt);
+            }
+        });
 
-        Cuentas.add(rb6);
+        bg.add(rb6);
+        rb6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rb6ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -240,6 +271,45 @@ public class Consultas extends javax.swing.JFrame {
         
     }//GEN-LAST:event_taMovimientosAncestorAdded
 
+    private void rb1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb1ActionPerformed
+llenarCuenta();    }//GEN-LAST:event_rb1ActionPerformed
+
+    private void rb2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb2ActionPerformed
+llenarCuenta();    }//GEN-LAST:event_rb2ActionPerformed
+
+    private void rb4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb4ActionPerformed
+llenarCuenta();    }//GEN-LAST:event_rb4ActionPerformed
+
+    private void rb3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb3ActionPerformed
+llenarCuenta();    }//GEN-LAST:event_rb3ActionPerformed
+
+    private void rb5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb5ActionPerformed
+llenarCuenta();    }//GEN-LAST:event_rb5ActionPerformed
+
+    private void rb6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb6ActionPerformed
+        llenarCuenta();
+    }//GEN-LAST:event_rb6ActionPerformed
+
+     private void llenarCuenta(){ 
+        ArrayList<Integer> cuentas = Ejercicio1.cuentas();
+        ArrayList<javax.swing.JRadioButton> listaRB = new ArrayList();
+        listaRB.add(rb1);      
+        listaRB.add(rb2);      
+        listaRB.add(rb3);      
+        listaRB.add(rb4);      
+        listaRB.add(rb5);      
+        listaRB.add(rb6);
+        bg.clearSelection();
+            for(int x=0; x<listaRB.size();x++)
+        {
+            listaRB.get(x).setVisible(false);
+        }
+        for(int x=0; x<cuentas.size();x++)
+        {
+            listaRB.get(x).setText(""+cuentas.get(x));
+            listaRB.get(x).setVisible(true);
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -277,9 +347,9 @@ public class Consultas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.ButtonGroup Cuentas;
     private javax.swing.JButton bConsultas;
     private javax.swing.JButton bMovimientos;
+    private javax.swing.ButtonGroup bg;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;

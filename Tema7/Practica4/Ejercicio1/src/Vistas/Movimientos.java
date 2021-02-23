@@ -7,6 +7,7 @@ package Vistas;
 
 import Excepciones.*;
 import ejercicio1.Ejercicio1;
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
@@ -33,7 +34,7 @@ public class Movimientos extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
+        bg = new javax.swing.ButtonGroup();
         jToolBar1 = new javax.swing.JToolBar();
         bConsultas = new javax.swing.JButton();
         bMovimientos = new javax.swing.JButton();
@@ -92,27 +93,47 @@ public class Movimientos extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Cuentas"));
 
-        buttonGroup1.add(rb1);
+        bg.add(rb1);
         rb1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rb1ActionPerformed(evt);
             }
         });
 
-        buttonGroup1.add(rb2);
+        bg.add(rb2);
         rb2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rb2ActionPerformed(evt);
             }
         });
 
-        buttonGroup1.add(rb3);
+        bg.add(rb3);
+        rb3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rb3ActionPerformed(evt);
+            }
+        });
 
-        buttonGroup1.add(rb4);
+        bg.add(rb4);
+        rb4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rb4ActionPerformed(evt);
+            }
+        });
 
-        buttonGroup1.add(rb5);
+        bg.add(rb5);
+        rb5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rb5ActionPerformed(evt);
+            }
+        });
 
-        buttonGroup1.add(rb6);
+        bg.add(rb6);
+        rb6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rb6ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -313,11 +334,12 @@ public class Movimientos extends javax.swing.JFrame {
     }//GEN-LAST:event_miMovimientosActionPerformed
 
     private void tfCuentaDestinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfCuentaDestinoActionPerformed
-        Ejercicio1.cuentas();
+        
     }//GEN-LAST:event_tfCuentaDestinoActionPerformed
 
     private void rb2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb2ActionPerformed
-        // TODO add your handling code here:
+        llenarCuenta();      
+        
     }//GEN-LAST:event_rb2ActionPerformed
 
     private void tfImporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfImporteActionPerformed
@@ -354,13 +376,48 @@ public class Movimientos extends javax.swing.JFrame {
     }//GEN-LAST:event_cbTipoMovimientoActionPerformed
 
     private void rb1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb1ActionPerformed
-        // TODO add your handling code here:
+        llenarCuenta();
     }//GEN-LAST:event_rb1ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
+    private void rb3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb3ActionPerformed
+       llenarCuenta();
+    }//GEN-LAST:event_rb3ActionPerformed
+
+    private void rb4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb4ActionPerformed
+       llenarCuenta();
+    }//GEN-LAST:event_rb4ActionPerformed
+
+    private void rb5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb5ActionPerformed
+       llenarCuenta();
+    }//GEN-LAST:event_rb5ActionPerformed
+
+    private void rb6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb6ActionPerformed
+        llenarCuenta();
+    }//GEN-LAST:event_rb6ActionPerformed
+    private void llenarCuenta(){ 
+        ArrayList<Integer> cuentas = Ejercicio1.cuentas();
+        ArrayList<javax.swing.JRadioButton> listaRB = new ArrayList();
+        listaRB.add(rb1);      
+        listaRB.add(rb2);      
+        listaRB.add(rb3);      
+        listaRB.add(rb4);      
+        listaRB.add(rb5);      
+        listaRB.add(rb6);
+        bg.clearSelection();
+        for(int x=0; x<listaRB.size();x++)
+        {
+            listaRB.get(x).setVisible(false);
+        }
+        for(int x=0; x<cuentas.size();x++)
+        {
+            listaRB.get(x).setText(""+cuentas.get(x));
+            listaRB.get(x).setVisible(true);
+        }
+    }
+       /**
+        * @param args the command line arguments
+        */
+       public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -397,7 +454,7 @@ public class Movimientos extends javax.swing.JFrame {
     private javax.swing.JButton bAceptar;
     private javax.swing.JButton bConsultas;
     private javax.swing.JButton bMovimientos;
-    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup bg;
     private javax.swing.JComboBox<String> cbTipoMovimiento;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

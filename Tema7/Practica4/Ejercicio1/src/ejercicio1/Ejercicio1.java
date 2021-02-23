@@ -117,10 +117,13 @@ public class Ejercicio1 {
         }
     }
 
-    public static int cuentas() {
-        if (c1.getNumCuenta().size() > 6)
-            return 6;
-        return c1.getNumCuenta();
+    public static ArrayList<Integer> cuentas() {
+        ArrayList<Integer> devolver = new ArrayList();
+        for(int x=0;x<c1.getNumCuenta().size() ;x++){
+            devolver.add(c1.getNumCuenta().get(x).getNumero()) ;
+        }
+        return devolver;
+        
     }
 
    
