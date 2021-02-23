@@ -11,6 +11,12 @@ public class Cliente {
     public Cliente() {
     }
 
+    public Cliente(String nombre, String nif, String clave) {
+        this.nombre = nombre;
+        this.nif = nif;
+        this.clave = clave;
+    }
+
     public Cliente(String nombre, String nif, String clave, ArrayList<Cuenta> numCuenta) {
         this.nombre = nombre;
         this.nif = nif;

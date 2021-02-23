@@ -1,7 +1,9 @@
 package ejercicio1;
 
 import Clases.*;
+import Excepciones.*;
 import Vistas.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Ejercicio1 {
@@ -14,6 +16,8 @@ public class Ejercicio1 {
     private static ArrayList<Cliente> clientes;
     private static ArrayList<Cuenta> cuentas;
     private static ArrayList<Movimiento> movimientos;
+    private static ArrayList<Cuenta> listaC;
+    private static Cliente c1;
     
     public static void main(String[] args) {
         generarDatos();
@@ -25,22 +29,30 @@ public class Ejercicio1 {
      public static void generarDatos(){
         movimientos=new ArrayList();
         
-        movimientos.add(new Movimiento());
-        movimientos.add(new Movimiento());
-        movimientos.add(new Movimiento());
+        movimientos.add(new Movimiento(LocalDate.now(),"Ingreso",1000));
+        movimientos.add(new Movimiento(LocalDate.now(),"Ingreso",20));
+        movimientos.add(new Movimiento(LocalDate.now(),"Ingreso",40));
          
         cuentas=new ArrayList();
         
-        cuentas.add(new Cuenta());
-        cuentas.add(new Cuenta());
-        cuentas.add(new Cuenta());
-        cuentas.add(new Cuenta());
+        cuentas.add(new Cuenta(12));
+        cuentas.add(new Cuenta(2));
+        cuentas.add(new Cuenta(3));
+        cuentas.add(new Cuenta(44));
         
         clientes=new ArrayList();
+            listaC=new ArrayList();
+            listaC.add(cuentas.get(1));
+            listaC.add(cuentas.get(3));
+        clientes.add(new Cliente("Pepe","11111111B","123",listaC));
         
-        clientes.add(new Cliente());
-        clientes.add(new Cliente());
-        clientes.add(new Cliente());
+            listaC=new ArrayList();
+            listaC.add(cuentas.get(2));
+        clientes.add(new Cliente("Marta","11111111A","123",listaC));
+        
+            listaC=new ArrayList();
+            listaC.add(cuentas.get(0));
+        clientes.add(new Cliente("Juan","11111111C","123",listaC));
                                 
     }
 
@@ -83,6 +95,38 @@ public class Ejercicio1 {
         m=new Movimientos();
         m.setVisible(true);
     }
+
+    public static boolean validarNif(String nif) {
+         try{
+            int x;
+            
+            for(x=0;x>clientes.size() && !clientes.get(x).getNif().equalsIgnoreCase(nif);x++){} 
+            if(x==clientes.size())
+               throw new DatoNoValido();
+            
+            c1= clientes.get(x);
+            return true;               
+           
+        }
+        catch(DatoNoValido e){
+            c1= null;
+            return false;
+        }
+    }
+
+    public static boolean validarClave(String clave) {
+        try{
+            if(!c1.getClave().equalsIgnoreCase(clave))
+                throw new DatoNoValido(); 
+            return true;    
+        }
+        catch(DatoNoValido e){
+            c1= null;
+            return false;
+        }    
+    }
+
+
 
    
     

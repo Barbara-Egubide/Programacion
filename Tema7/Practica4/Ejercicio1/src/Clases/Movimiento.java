@@ -5,12 +5,12 @@ import java.time.LocalDate;
 public class Movimiento {
     private LocalDate fecha;
     private String descripcion;
-    private int importe;
+    private double importe;
 
     public Movimiento() {
     }
 
-    public Movimiento(LocalDate fecha, String descripcion, int importe) {
+    public Movimiento(LocalDate fecha, String descripcion, double importe) {
         this.fecha = fecha;
         this.descripcion = descripcion;
         this.importe = importe;
@@ -34,11 +34,11 @@ public class Movimiento {
         this.descripcion = descripcion;
     }
 
-    public int getImporte() {
+    public double getImporte() {
         return importe;
     }
 
-    public void setImporte(int importe) {
+    public void setImporte(double importe) {
         this.importe = importe;
     }
     

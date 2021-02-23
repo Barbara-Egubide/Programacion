@@ -272,7 +272,10 @@ public class VLogIn extends javax.swing.JFrame {
             Matcher m=p.matcher(tfNif.getText());
                 if(!m.matches())
                     throw new DatoNoValido("Nif o contraseña incorrecta");
-                
+                if(!pfClave.getText().isEmpty())
+                    throw new DatoNoValido("Nif o contraseña incorrecta");
+                if(!Ejercicio1.validarNif(tfNif.getText()) && !Ejercicio1.validarClave(numerosCLave))
+                    throw new DatoNoValido("Nif o contraseña incorrecta");
                 
             Ejercicio1.operaciones();
         }

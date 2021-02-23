@@ -3,24 +3,28 @@ package Clases;
 import java.util.ArrayList;
 
 public class Cuenta {
-    private String numero;
+    private int numero;
     private ArrayList<Movimiento>  listaMovimiento;
 
     public Cuenta() {
     }
 
-    public Cuenta(String numero, ArrayList<Movimiento> listaMovimiento) {
+    public Cuenta(int numero) {
+        this.numero = numero;
+    }
+
+    public Cuenta(int numero, ArrayList<Movimiento> listaMovimiento) {
         this.numero = numero;
         this.listaMovimiento = listaMovimiento;
     }
     
     // Setter and Getter
 
-    public String getNumero() {
+    public int getNumero() {
         return numero;
     }
 
-    public void setNumero(String numero) {
+    public void setNumero(int numero) {
         this.numero = numero;
     }
 
