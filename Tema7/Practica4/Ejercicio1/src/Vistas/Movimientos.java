@@ -93,6 +93,11 @@ public class Movimientos extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Cuentas"));
 
         buttonGroup1.add(rb1);
+        rb1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rb1ActionPerformed(evt);
+            }
+        });
 
         buttonGroup1.add(rb2);
         rb2.addActionListener(new java.awt.event.ActionListener() {
@@ -308,7 +313,7 @@ public class Movimientos extends javax.swing.JFrame {
     }//GEN-LAST:event_miMovimientosActionPerformed
 
     private void tfCuentaDestinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfCuentaDestinoActionPerformed
-        
+        Ejercicio1.cuentas();
     }//GEN-LAST:event_tfCuentaDestinoActionPerformed
 
     private void rb2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb2ActionPerformed
@@ -347,6 +352,10 @@ public class Movimientos extends javax.swing.JFrame {
     private void cbTipoMovimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbTipoMovimientoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbTipoMovimientoActionPerformed
+
+    private void rb1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rb1ActionPerformed
 
     /**
      * @param args the command line arguments

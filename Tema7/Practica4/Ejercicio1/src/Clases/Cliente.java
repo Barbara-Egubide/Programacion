@@ -43,6 +43,22 @@ public class Cliente {
         this.clave = clave;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public ArrayList<Cuenta> getNumCuenta() {
+        return numCuenta;
+    }
+
+    public void setNumCuenta(ArrayList<Cuenta> numCuenta) {
+        this.numCuenta = numCuenta;
+    }
+
     
     
 }

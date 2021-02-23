@@ -117,6 +117,12 @@ public class Ejercicio1 {
         }
     }
 
+    public static int cuentas() {
+        if (c1.getNumCuenta().size() > 6)
+            return 6;
+        return c1.getNumCuenta();
+    }
+
    
 
 
