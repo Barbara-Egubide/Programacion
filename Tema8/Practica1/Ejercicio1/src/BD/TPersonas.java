@@ -1,7 +1,9 @@
 package BD;
 
 import Clases.*;
+import Excepciones.DatoInexistente;
 import java.sql.*;
+import javax.swing.JOptionPane;
 
 
 public class TPersonas {
@@ -25,6 +27,7 @@ public class TPersonas {
             throw new Exception("El número de filas actualizadas no es uno");
     }
     public Persona selecionarP(String nombre) throws Exception {
+        try{
         String select="select * from personas where nombre = ?;";
         PreparedStatement ps = con.prepareStatement(select);
         ps.setString(1, nombre);
@@ -40,10 +43,13 @@ public class TPersonas {
             return p;
         }        
         else
+            throw new DatoInexistente();
             
+        } catch (DatoInexistente e) {
+                JOptionPane.showMessageDialog(null, "La persona no exsiste, asegurese de que esta bien escrito");
+        }
         return null;
-        
-       
+               
     } 
     
 }

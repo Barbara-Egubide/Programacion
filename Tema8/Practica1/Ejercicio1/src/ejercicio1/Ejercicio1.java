@@ -66,19 +66,8 @@ public class Ejercicio1 {
         vp.setVisible(true);
     }
 
-    public static Persona consultaP(String nombre) throws Exception {
-        try {
-            
-            p=tp.selecionarP(nombre);  
-            if(p==null)
-                throw new DatoInexistente();
-            
-        } catch (DatoInexistente e) {
-                JOptionPane.showMessageDialog(null, "La persona no exsiste asegurese de que esta bien escrito");
-        }
-        return p;
-        
-        
+    public static void consultaP(String nombre) throws Exception {
+            p=tp.selecionarP(nombre); 
     }
 
     public static String devolverEdad() {

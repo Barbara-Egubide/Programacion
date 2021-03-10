@@ -5,11 +5,9 @@
  */
 package Vistas;
 
-import Clases.Persona;
+
 import com.mysql.jdbc.exceptions.MySQLIntegrityConstraintViolationException;
 import ejercicio1.Ejercicio1;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -214,11 +212,17 @@ public class VPersonas extends javax.swing.JFrame {
                     break;
                 case 2:
                     Ejercicio1.consultaP(tfNombre.getText());
+                    
+                    tfEdad.enable(false);
+                    tfProfesion.enable(false);
+                    tfTelefono.enable(false);
                     tfEdad.setText(Ejercicio1.devolverEdad());
                     tfProfesion.setText(Ejercicio1.devolverProfesion());
                     tfTelefono.setText(Ejercicio1.devolverTelefono());
                     bSalir.setEnabled(true);
-                    bAceptar.setEnabled(false); 
+                    break;
+                case 3:
+                    /*Ejercicio1.todasLasP();*/
                     break;
             }
            
